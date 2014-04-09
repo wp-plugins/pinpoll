@@ -1,6 +1,6 @@
 === PINPOLL Widget ===
 Contributors: PINPOLL
-Tags: poll, iframe, widget, polls, free, pinpoll
+Tags: poll, iframe, widget, polls, free, pinpoll, opinion
 Requires at least: 3.0
 Tested up to: 3.7.1
 Stable tag: 4.1
@@ -15,7 +15,7 @@ This widget can display polls from pinpoll.net. You may create your own polls fi
 It’s free!
 
 == Installation ==
-1. Download and unzip pinpoll-widget.zip 
+1. Download and unzip pinpoll.zip 
 2. Upload the folder containing "pinpoll-widget.php" to the "/wp-content/plugins/" directory
 3. Activate the plug-in through the "Plugins" menu in WordPress
 4. To add a poll to a sidebar, browse to "Appearance > Widgets" and drag "PINPOLL" to desired sidebar. Configure the parameters such as a Poll ID for specific polls or the Sample Size for random polls and save your changes. You may as well select your preferred category. Language will be detected automatically.

@@ -21,7 +21,7 @@ class pinpoll_settings_config {
 	 
 	//  DISPLAY SETTINGS
 	var $title = "Code Generator";  
-	var $intro_text = 'This page allows you to generate the required HTML code to include the <a href="http://wordpress.org/extend/plugins/pinpoll-widget" target="_blank">PINPOLL Widget</a> within any post.'; 
+	var $intro_text = 'This page allows you to generate the required HTML code to include the <a href="http://wordpress.org/plugins/pinpoll/" target="_blank">PINPOLL Widget</a> within any post.'; 
 	var $nav_title = "PINPOLL"; // how page is listed on left-hand Settings panel
 
 	//  SECTIONS
