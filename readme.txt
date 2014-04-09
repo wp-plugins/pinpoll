@@ -42,12 +42,13 @@ Just drop us a line: support@pinpoll.net - we appreciate any new ideas to make P
 
 == Screenshots ==
 
-1. Activated widget in the plug-in section of WordPress
-2. Widget dragged to sidebar of the active theme, using a specific poll to be displayed
-3. Widget dragged to sidebar of the active theme, using a random poll from a specific category to be displayed
-4. Settings of the Code Generator and code to be copied from textfield
-5. Code snippet is included in post
-6. Screenshot of polls displayed in a post and the sidebar
+1. PINPOLL WordPress Widget - it's free!
+2. Activated widget in the plug-in section of WordPress
+3. Widget dragged to sidebar of the active theme, using a specific poll to be displayed
+4. Widget dragged to sidebar of the active theme, using a random poll from a specific category to be displayed
+5. Settings of the Code Generator and code to be copied from textfield
+6. Code snippet is included in post
+7. Screenshot of polls displayed in a post and the sidebar
 
 == Changelog ==
 
