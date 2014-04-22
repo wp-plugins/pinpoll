@@ -2,7 +2,7 @@
 Contributors: PINPOLL
 Tags: poll, iframe, widget, polls, free, pinpoll, opinion
 Requires at least: 3.0
-Tested up to: 3.8.2
+Tested up to: 3.9
 Stable tag: 4.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -57,6 +57,9 @@ Just drop us a line: support@pinpoll.net - we appreciate any new ideas to make P
 
 = 1.0.1 =
 * Tested an upgraded for 3.8.2 compatibility
+
+= 1.0.2 =
+* Tested an upgraded for 3.9 compatibility
 
 == Upgrade Notice ==
 * This is the very first version, we keep improving the widget on a regular basis - stay tuned!
