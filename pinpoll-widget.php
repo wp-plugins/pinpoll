@@ -2,7 +2,7 @@
 /*
 Plugin Name: PINPOLL
 Plugin URI: http://pinpoll.net/Plug-ins/
-Description: This widget displays polls from pinpoll.net inside your blog.
+Description: Select or create polls at PINPOLL.net and include them in your Blog to increase traffic and user interaction - it's free!
 Version: 1.0.2
 Min WP Version: 3.0
 Author: Tobias Oberascher

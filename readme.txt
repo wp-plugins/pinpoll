@@ -7,7 +7,7 @@ Stable tag: 4.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-This widget displays polls from pinpoll.net inside your blog.
+Select or create polls at PINPOLL.net and include them in your Blog to increase traffic and user interaction - it's free!
 
 == Description ==
 This widget can display polls from pinpoll.net. You may create your own polls first to include them or choose from more than 3.000 existing polls from over 20 categories, one of which will perfectly match the contents of you blog. Show specific or random polls and set a minimum sample size. 
