@@ -3,7 +3,7 @@
 Plugin Name: PINPOLL
 Plugin URI: http://pinpoll.net/Plug-ins/
 Description: This widget displays polls from pinpoll.net inside your blog.
-Version: 1.0.1
+Version: 1.0.2
 Min WP Version: 3.0
 Author: Tobias Oberascher
 Author URI: http://pinpoll.net/Tobias
