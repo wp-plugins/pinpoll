@@ -1,13 +1,13 @@
 === PINPOLL Widget ===
 Contributors: PINPOLL
-Tags: poll, iframe, widget, polls, free, pinpoll
+Tags: poll, iframe, widget, polls, free, pinpoll, opinion
 Requires at least: 3.0
-Tested up to: 3.7.1
+Tested up to: 3.9
 Stable tag: 4.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-This widget displays polls from pinpoll.net inside your blog.
+Select or create polls at PINPOLL.net and include them in your Blog to increase traffic and user interaction - it's free!
 
 == Description ==
 This widget can display polls from pinpoll.net. You may create your own polls first to include them or choose from more than 3.000 existing polls from over 20 categories, one of which will perfectly match the contents of you blog. Show specific or random polls and set a minimum sample size. 
@@ -15,7 +15,7 @@ This widget can display polls from pinpoll.net. You may create your own polls fi
 It’s free!
 
 == Installation ==
-1. Download and unzip pinpoll-widget.zip 
+1. Download and unzip pinpoll.zip 
 2. Upload the folder containing "pinpoll-widget.php" to the "/wp-content/plugins/" directory
 3. Activate the plug-in through the "Plugins" menu in WordPress
 4. To add a poll to a sidebar, browse to "Appearance > Widgets" and drag "PINPOLL" to desired sidebar. Configure the parameters such as a Poll ID for specific polls or the Sample Size for random polls and save your changes. You may as well select your preferred category. Language will be detected automatically.
@@ -23,9 +23,9 @@ It’s free!
 
 Some examples:
 [pinpoll]http://pinpoll.net/bookmarklet/getBanner?id=3480[/pinpoll] 
-[pinpoll]http://pinpoll.net/bookmarklet/getBanner?category_id=2&popular_min=100,200,465,margin:10px 0;[/pinpoll]. 
-[pinpoll]http://pinpoll.net/bookmarklet/getBanner?category_id=5,200,465[/pinpoll]. 
-[pinpoll]http://pinpoll.net/bookmarklet/getBanner?id=3480,200,465,border:1px solid #333;float:left;[/pinpoll] 
+[pinpoll]http://pinpoll.net/bookmarklet/getBanner?category_id=2&popular_min=100,200,450,margin:10px 0;[/pinpoll]. 
+[pinpoll]http://pinpoll.net/bookmarklet/getBanner?category_id=5,200,450[/pinpoll]. 
+[pinpoll]http://pinpoll.net/bookmarklet/getBanner?id=3480,200,450,border:1px solid #333;float:left;[/pinpoll] 
 
 Please ensure that the URL complies with this format to avoid problems with the underlying webservice.
 
@@ -42,17 +42,27 @@ Just drop us a line: support@pinpoll.net - we appreciate any new ideas to make P
 
 == Screenshots ==
 
-1. Activated widget in the plug-in section of WordPress
-2. Widget dragged to sidebar of the active theme, using a specific poll to be displayed
-3. Widget dragged to sidebar of the active theme, using a random poll from a specific category to be displayed
-4. Settings of the Code Generator and code to be copied from textfield
-5. Code snippet is included in post
-6. Screenshot of polls displayed in a post and the sidebar
+1. PINPOLL WordPress Widget - it's free!
+2. Activated widget in the plug-in section of WordPress
+3. Widget dragged to sidebar of the active theme, using a specific poll to be displayed
+4. Widget dragged to sidebar of the active theme, using a random poll from a specific category to be displayed
+5. Settings of the Code Generator and code to be copied from textfield
+6. Code snippet is included in post
+7. Screenshot of polls displayed in a post and the sidebar
 
 == Changelog ==
 
 = 1.0 =
 * Initial public release.
+
+= 1.0.1 =
+* Tested an upgraded for 3.8.2 compatibility
+
+= 1.0.2 =
+* Tested an upgraded for 3.9 compatibility
+
+= 1.0.3 =
+* Changed default values to facilitate first time integration
 
 == Upgrade Notice ==
 * This is the very first version, we keep improving the widget on a regular basis - stay tuned!

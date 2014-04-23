@@ -21,7 +21,7 @@ class pinpoll_settings_config {
 	 
 	//  DISPLAY SETTINGS
 	var $title = "Code Generator";  
-	var $intro_text = 'This page allows you to generate the required HTML code to include the <a href="http://wordpress.org/extend/plugins/pinpoll-widget" target="_blank">PINPOLL Widget</a> within any post.'; 
+	var $intro_text = 'This page allows you to generate the required HTML code to include the <a href="http://wordpress.org/plugins/pinpoll/" target="_blank">PINPOLL Widget</a> within any post.'; 
 	var $nav_title = "PINPOLL"; // how page is listed on left-hand Settings panel
 
 	//  SECTIONS
@@ -58,9 +58,9 @@ class pinpoll_settings_config {
             ),
 			'height' => array (
               'label' => "Height",
-              'description' => "Set height in pixels (e.g., 250px or 250) or relative (e.g., 25%).",
+              'description' => "Set height in pixels (e.g., 450px or 450) or relative (e.g., 25%).",
               'length' => "3",
-              'default_value' => "250"
+              'default_value' => "450"
             ),
             'style' => array (
               'label' => "CSS Style",
