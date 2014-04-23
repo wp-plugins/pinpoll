@@ -58,9 +58,9 @@ class pinpoll_settings_config {
             ),
 			'height' => array (
               'label' => "Height",
-              'description' => "Set height in pixels (e.g., 250px or 250) or relative (e.g., 25%).",
+              'description' => "Set height in pixels (e.g., 450px or 450) or relative (e.g., 25%).",
               'length' => "3",
-              'default_value' => "250"
+              'default_value' => "450"
             ),
             'style' => array (
               'label' => "CSS Style",

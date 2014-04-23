@@ -23,9 +23,9 @@ It’s free!
 
 Some examples:
 [pinpoll]http://pinpoll.net/bookmarklet/getBanner?id=3480[/pinpoll] 
-[pinpoll]http://pinpoll.net/bookmarklet/getBanner?category_id=2&popular_min=100,200,465,margin:10px 0;[/pinpoll]. 
-[pinpoll]http://pinpoll.net/bookmarklet/getBanner?category_id=5,200,465[/pinpoll]. 
-[pinpoll]http://pinpoll.net/bookmarklet/getBanner?id=3480,200,465,border:1px solid #333;float:left;[/pinpoll] 
+[pinpoll]http://pinpoll.net/bookmarklet/getBanner?category_id=2&popular_min=100,200,450,margin:10px 0;[/pinpoll]. 
+[pinpoll]http://pinpoll.net/bookmarklet/getBanner?category_id=5,200,450[/pinpoll]. 
+[pinpoll]http://pinpoll.net/bookmarklet/getBanner?id=3480,200,450,border:1px solid #333;float:left;[/pinpoll] 
 
 Please ensure that the URL complies with this format to avoid problems with the underlying webservice.
 
@@ -60,6 +60,9 @@ Just drop us a line: support@pinpoll.net - we appreciate any new ideas to make P
 
 = 1.0.2 =
 * Tested an upgraded for 3.9 compatibility
+
+= 1.0.3 =
+* Changed default values to facilitate first time integration
 
 == Upgrade Notice ==
 * This is the very first version, we keep improving the widget on a regular basis - stay tuned!

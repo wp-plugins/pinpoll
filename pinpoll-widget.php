@@ -3,7 +3,7 @@
 Plugin Name: PINPOLL
 Plugin URI: http://pinpoll.net/Plug-ins/
 Description: Select or create polls at PINPOLL.net and include them in your Blog to increase traffic and user interaction - it's free!
-Version: 1.0.2
+Version: 1.0.3
 Min WP Version: 3.0
 Author: Tobias Oberascher
 Author URI: http://pinpoll.net/Tobias
@@ -20,7 +20,7 @@ class Pinpoll_Widget extends WP_Widget {
 
 	function __construct() {	   
 		$widget_ops = array('classname' => 'Pinpoll_Widget', 'description' => "This widget displays polls from pinpoll.net inside your blog." );
-		$control_ops = array('width' => 200, 'height' => 250);
+		$control_ops = array('width' => 200, 'height' => 450);
 		self::setCategories();
 		parent::__construct('pinpoll', __('PINPOLL'), $widget_ops, $control_ops);
 	}	
@@ -64,7 +64,7 @@ class Pinpoll_Widget extends WP_Widget {
 			array( 
 				'title' => 'Share Opinion.', 
 				'width' => 200, 
-				'height' => 250, 
+				'height' => 450, 
 				'poll_id' => 3480,  //The default poll
 				'service_url_base' => 'http://pinpoll.net/bookmarklet/getBanner', 
 				'service_url' => 'http://pinpoll.net/bookmarklet/getBanner?id=3480', 
@@ -180,7 +180,7 @@ class Pinpoll_Widget extends WP_Widget {
 		$instance = $old_instance;
 		$instance['title'] = strip_tags($new_instance['title']);
 		$instance['width'] = trim(strip_tags($new_instance['width'])) != "" ? strip_tags($new_instance['width']) : 200;
-		$instance['height'] = trim(strip_tags($new_instance['height'])) != "" ? strip_tags($new_instance['height']) : 250;
+		$instance['height'] = trim(strip_tags($new_instance['height'])) != "" ? strip_tags($new_instance['height']) : 450;
 		$instance['poll_id'] = strip_tags($new_instance['poll_id']);
 		$instance['service_url_base'] = strip_tags($new_instance['service_url_base']);
 		$instance['fallback_url_base'] = strip_tags($new_instance['fallback_url_base']);
@@ -223,7 +223,7 @@ function widget_pinpoll_on_page($text){
 		$param = explode(",", $text[1]);
 		$others = "";
 		$others = ' width="' .($param[1] != "" ? $param[1] : 200) . '"';
-		$others .= ' height="' .($param[2] != "" ? $param[2] : 250) . '"';
+		$others .= ' height="' .($param[2] != "" ? $param[2] : 450) . '"';
 		$others .= ' style="' .($param[3] != "" ? $param[3] : ""). '"';
 		$others .= ' frameborder="no" scrolling="0"';			
 		//generate the iframe tag
