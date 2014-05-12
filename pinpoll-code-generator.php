@@ -82,7 +82,7 @@ class pinpoll_settings_config {
  	
 	public static function setCategories() {
 		
-		$url = "http://pinpoll.net/bookmarklet/getCategories";
+		$url = "https://pinpoll.net/bookmarklet/getCategories";
 	
 		$ch = curl_init();
 		
@@ -137,7 +137,7 @@ class pinpoll_settings {
 		printf('<p class="submit"><input type="submit" name="Submit" value="%s" /></p></form>',__('Get Code!'));
 			
 		//Produce the Code
-		$service_url_base =	"http://pinpoll.net/bookmarklet/getBanner";
+		$service_url_base =	"https://pinpoll.net/bookmarklet/getBanner";
 		$options = get_option($pinpoll_settings['group'].'_'.'poll_type');		
 			
 		switch($options['text_string']) {

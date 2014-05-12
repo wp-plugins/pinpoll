@@ -1,12 +1,12 @@
 <?php
 /*
 Plugin Name: PINPOLL
-Plugin URI: http://pinpoll.net/Plug-ins/
+Plugin URI: https://pinpoll.net/Plug-ins/
 Description: Select or create polls at PINPOLL.net and include them in your Blog to increase traffic and user interaction - it's free!
-Version: 1.0.3
+Version: 1.1
 Min WP Version: 3.0
 Author: Tobias Oberascher
-Author URI: http://pinpoll.net/Tobias
+Author URI: https://pinpoll.net/Tobias
 */
 ?>
 <?php
@@ -37,7 +37,7 @@ class Pinpoll_Widget extends WP_Widget {
 
 	protected static function setCategories() {
 		
-		$url = "http://pinpoll.net/bookmarklet/getCategories";
+		$url = "https://pinpoll.net/bookmarklet/getCategories";
 	
 		$ch = curl_init();
 		
@@ -66,10 +66,10 @@ class Pinpoll_Widget extends WP_Widget {
 				'width' => 200, 
 				'height' => 450, 
 				'poll_id' => 3480,  //The default poll
-				'service_url_base' => 'http://pinpoll.net/bookmarklet/getBanner', 
-				'service_url' => 'http://pinpoll.net/bookmarklet/getBanner?id=3480', 
-				'fallback_url_base' => 'http://pinpoll.net/', 
-				'fallback_url' => 'http://pinpoll.net/poll/3480',
+				'service_url_base' => 'https://pinpoll.net/bookmarklet/getBanner', 
+				'service_url' => 'https://pinpoll.net/bookmarklet/getBanner?id=3480', 
+				'fallback_url_base' => 'https://pinpoll.net/', 
+				'fallback_url' => 'https://pinpoll.net/poll/3480',
 				'style' => '',
 				'poll_type' => '',
 				'category_id' => 0,
@@ -127,7 +127,7 @@ class Pinpoll_Widget extends WP_Widget {
 			});
 		</script>
                 
-		<p><small>Display specific or random polls in an <a href="http://www.w3.org/TR/html4/present/frames.html#edef-IFRAME">iframe</a>. For plug-in details <a href="http://pinpoll.net/Plug-ins" target="_blank">click here</a>.</small></p>
+		<p><small>Display specific or random polls in an <a href="http://www.w3.org/TR/html4/present/frames.html#edef-IFRAME">iframe</a>. For plug-in details <a href="https://pinpoll.net/Plug-ins" target="_blank">click here</a>.</small></p>
 		<p>
 			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:' ); ?></label> 
 			<input size="28" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo esc_attr($title); ?>" />
