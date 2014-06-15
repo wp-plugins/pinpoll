@@ -22,10 +22,10 @@ It’s free!
 5. To add polls to any post we suggest to use the Code Generator ("Settings > PINPOLL") to simply copy the generated code and paste it to your post. Experienced users may simply use and adjust this snippet [pinpoll]service_url,width,height,style[/pinpoll]
 
 Some examples:
-[pinpoll]http://pinpoll.net/bookmarklet/getBanner?id=3480[/pinpoll] 
-[pinpoll]http://pinpoll.net/bookmarklet/getBanner?category_id=2&popular_min=100,200,450,margin:10px 0;[/pinpoll]. 
-[pinpoll]http://pinpoll.net/bookmarklet/getBanner?category_id=5,200,450[/pinpoll]. 
-[pinpoll]http://pinpoll.net/bookmarklet/getBanner?id=3480,200,450,border:1px solid #333;float:left;[/pinpoll] 
+[pinpoll]https://pinpoll.net/bookmarklet/getBanner?id=3480[/pinpoll] 
+[pinpoll]https://pinpoll.net/bookmarklet/getBanner?category_id=2&popular_min=100,200,450,margin:10px 0;[/pinpoll]. 
+[pinpoll]https://pinpoll.net/bookmarklet/getBanner?category_id=5,200,450[/pinpoll]. 
+[pinpoll]https://pinpoll.net/bookmarklet/getBanner?id=3480,200,450,border:1px solid #333;float:left;[/pinpoll] 
 
 Please ensure that the URL complies with this format to avoid problems with the underlying webservice.
 
