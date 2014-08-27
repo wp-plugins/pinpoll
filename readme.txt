@@ -12,7 +12,9 @@ Select or create polls at PINPOLL.net and include them in your Blog to increase 
 == Description ==
 This widget can display polls from pinpoll.net. You may create your own polls first to include them or choose from more than 3.000 existing polls from over 20 categories, one of which will perfectly match the contents of you blog. Show specific or random polls and set a minimum sample size. 
 
-It’s free to use! However, if YOU want to get paid for using it, just get in touch: office@pinpoll.net
+It’s free to use! 
+
+However, if YOU want to get paid for using it, just get in touch: office@pinpoll.net
 
 == Installation ==
 1. Download and unzip pinpoll.zip 
