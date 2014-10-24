@@ -36,12 +36,17 @@ class pinpoll_settings_config {
               'default_value' => ""		
             ),
             'poll_id' => array (
-              'label' => "Poll ID",
-              'description' => "If you choose to include a specific poll, enter the ID of such existing poll on pinpoll.net.",
+              'label' => "Specific Poll",
+              'description' => "If you choose to include a specific poll, enter the ID of such existing poll from pinpoll.net.",
               'default_value' => "3480"
             ),
+			'board_id' => array(
+              'label' => "Specific Board",
+              'description' => "If you choose to include a specific board, enter the ID of such existing board from pinpoll.net.",
+              'default_value' => "0"
+            ),
 			'category_id' => array(
-              'label' => "Select Category",
+              'label' => "Random Category",
               'dropdown' => "category_id_dropdown",
               'default_value' => "0"
             ),
@@ -50,21 +55,26 @@ class pinpoll_settings_config {
               'description' => "If you choose to include random polls, you may limit their minimum sample size.",
               'default_value' => "0"
             ),
+            'limit' => array (
+              'label' => "Maximum Polls",
+              'description' => "If you choose to include random polls, you may limit the maximum number of polls.",
+              'default_value' => "50"
+            ),
 		    'width' => array (
               'label' => "Width",
-              'description' => "Set width in pixels (e.g., 200px or 200) or relative (e.g., 20%).",
+              'description' => "Set width as integer for pixels (e.g., 350).",
               'length' => "3",
-              'default_value' => "200"
+              'default_value' => "350"
             ),
 			'height' => array (
               'label' => "Height",
-              'description' => "Set height in pixels (e.g., 450px or 450) or relative (e.g., 25%).",
+              'description' => "Set height as integer for pixels (e.g., 350).",
               'length' => "3",
-              'default_value' => "450"
+              'default_value' => "350"
             ),
-            'style' => array (
-              'label' => "CSS Style",
-              'description' => "Enter valid CSS code here to style your polls. Do not use quotes (e.g., align:left;).",
+            'colour' => array (
+              'label' => "Custom Colour",
+              'description' => "Use hex-code without # sign to adjust look &amp; feel (e.g., FF3366).",
               'default_value' => ""
             )
           )
@@ -75,14 +85,15 @@ class pinpoll_settings_config {
 	public static $dropdown_options = array (
 		'poll_type_dropdown' => array (
 			'' => "Select Type...",
-			'specific' => "Specific Poll",
-			'random' => "Random Polls"
+			'poll' => "Specific Poll",
+			'board' => "Specific Board",
+			'category' => "Random Polls from Category"
 		)
 	);
  	
 	public static function setCategories() {
 		
-		$url = "https://pinpoll.net/bookmarklet/getCategories";
+		$url = "https://pinpoll.net/plugin/getCategories";
 	
 		$ch = curl_init();
 		
@@ -137,34 +148,43 @@ class pinpoll_settings {
 		printf('<p class="submit"><input type="submit" name="Submit" value="%s" /></p></form>',__('Get Code!'));
 			
 		//Produce the Code
-		$service_url_base =	"https://pinpoll.net/bookmarklet/getBanner";
+		$service_url_base =	"https://pinpoll.net/plugin/getPoll/";
 		$options = get_option($pinpoll_settings['group'].'_'.'poll_type');		
 			
 		switch($options['text_string']) {
-			case 'random':
+			case 'poll': default:
+				$options = get_option($pinpoll_settings['group'].'_'.'poll_id');
+				$poll_id =	$options['text_string'];
+				$url = $service_url_base."?id=".$poll_id;
+			break;	
+			case 'board': default:
+				$options = get_option($pinpoll_settings['group'].'_'.'board_id');
+				$board_id =	$options['text_string'];
+				$url = $service_url_base."?board_id=".$board_id;
+			break;	
+			case 'category':
 				$options = get_option($pinpoll_settings['group'].'_'.'category_id');
 				$category_id =	$options['text_string'];
 				$options = get_option($pinpoll_settings['group'].'_'.'popular_min');
 				$popular_min =	$options['text_string'];
 				$url = $service_url_base."?category_id=".$category_id."&popular_min=".$popular_min;
 			break;
-			case 'specific': default:
-				$options = get_option($pinpoll_settings['group'].'_'.'poll_id');
-				$poll_id =	$options['text_string'];
-				$url = $service_url_base."?id=".$poll_id;
-			break;	
 		}
 		
 		$options = get_option($pinpoll_settings['group'].'_'.'height');		
 		$height = $options['text_string'];
 		$options = get_option($pinpoll_settings['group'].'_'.'width');		
 		$width = $options['text_string'];
-		$options = get_option($pinpoll_settings['group'].'_'.'style');		
-		$style = $options['text_string'];
+		$options = get_option($pinpoll_settings['group'].'_'.'colour');		
+		$colour = $options['text_string'];
+		$options = get_option($pinpoll_settings['group'].'_'.'limit');		
+		$limit = $options['text_string'];
+		
+		$url.= "&width=".$width."&height=".$height."&colour=".$colour."&limit=".$limit;
 	
 		echo "<h3>Copy this code and paste it to the post of your choice:</h3>";
 		echo '<textarea style="width:500px; height:50px; font-family:courier; font-size:13px;" name="code" id="code">';
-		printf('[pinpoll]%s,%s,%s,%s[/pinpoll]', $url, $width, $height, $style);
+		printf('[pinpoll]%s,%s,%s[/pinpoll]', $url, $width, $height);
 		echo "</textarea>";
 		
 		echo '</div><pre>';
