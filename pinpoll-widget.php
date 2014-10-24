@@ -3,7 +3,7 @@
 Plugin Name: PINPOLL
 Plugin URI: https://pinpoll.net/Plug-ins/
 Description: Select or create polls at PINPOLL.net and include them in your Blog to increase traffic and user interaction - it's free!
-Version: 1.1
+Version: 2.0
 Min WP Version: 3.0
 Author: Tobias Oberascher
 Author URI: https://pinpoll.net/Tobias
@@ -20,7 +20,7 @@ class Pinpoll_Widget extends WP_Widget {
 
 	function __construct() {	   
 		$widget_ops = array('classname' => 'Pinpoll_Widget', 'description' => "This widget displays polls from pinpoll.net inside your blog." );
-		$control_ops = array('width' => 200, 'height' => 450);
+		$control_ops = array('width' => 350, 'height' => 350);
 		self::setCategories();
 		parent::__construct('pinpoll', __('PINPOLL'), $widget_ops, $control_ops);
 	}	
@@ -37,7 +37,7 @@ class Pinpoll_Widget extends WP_Widget {
 
 	protected static function setCategories() {
 		
-		$url = "https://pinpoll.net/bookmarklet/getCategories";
+		$url = "https://pinpoll.net/plugin/getCategories";
 	
 		$ch = curl_init();
 		
@@ -63,17 +63,19 @@ class Pinpoll_Widget extends WP_Widget {
 			(array) $instance, 
 			array( 
 				'title' => 'Share Opinion.', 
-				'width' => 200, 
-				'height' => 450, 
+				'width' => 350, 
+				'height' => 350, 
 				'poll_id' => 3480,  //The default poll
-				'service_url_base' => 'https://pinpoll.net/bookmarklet/getBanner', 
-				'service_url' => 'https://pinpoll.net/bookmarklet/getBanner?id=3480', 
+				'service_url_base' => 'https://pinpoll.net/plugin/getPoll/', 
+				'service_url' => 'https://pinpoll.net/plugin/getPoll/?id=3480', 
 				'fallback_url_base' => 'https://pinpoll.net/', 
 				'fallback_url' => 'https://pinpoll.net/poll/3480',
-				'style' => '',
+				'colour' => '',
 				'poll_type' => '',
+				'board_id' => 0,
 				'category_id' => 0,
-				'popular_min' => 0
+				'popular_min' => 0,
+				'limit' => 50
 			) 
 		);
 		$title = strip_tags($instance['title']);
@@ -84,10 +86,12 @@ class Pinpoll_Widget extends WP_Widget {
 		$service_url = strip_tags($instance['service_url_base']).strip_tags($instance['poll_id']);
 		$fallback_url_base = strip_tags($instance['fallback_url_base']);
 		$fallback_url = strip_tags($instance['fallback_url_base']).strip_tags($instance['poll_id']);
-		$style = strip_tags($instance['style']);
+		$colour = strip_tags($instance['colour']);
 		$poll_type = strip_tags($instance['poll_type']);
+		$board_id = strip_tags($instance['board_id']);
 		$category_id = strip_tags($instance['category_id']);
 		$popular_min = strip_tags($instance['popular_min']);
+		$limit = strip_tags($instance['limit']);
 		?>
         
         <script type="text/javascript">
@@ -98,20 +102,26 @@ class Pinpoll_Widget extends WP_Widget {
 				toggleArea = function(elem) {
 					var widget_area = $(elem).closest('form');
 					switch($(elem).val()) {
-						case 'specific':
-							widget_area.find('.category').hide();
-							widget_area.find('.specific').fadeIn();
-							widget_area.find('.popular_min').hide();
+						case 'poll':
+							widget_area.find('.category, .board').hide();
+							widget_area.find('.poll').fadeIn();
+							widget_area.find('.popular_min, .limit').hide();
 							widget_area.find('.widget-control-save').removeAttr('disabled');
 						break;
-						case 'random':
-							widget_area.find('.specific').hide();
-							widget_area.find('.popular_min').fadeIn();
+						case 'board':
+							widget_area.find('.category, .poll').hide();
+							widget_area.find('.board').fadeIn();
+							widget_area.find('.popular_min, .limit').hide();
+							widget_area.find('.widget-control-save').removeAttr('disabled');
+						break;
+						case 'category':
+							widget_area.find('.poll, .board').hide();
+							widget_area.find('.popular_min, .limit').fadeIn();
 							widget_area.find('.category').fadeIn();
 							widget_area.find('.widget-control-save').removeAttr('disabled');
 						break;
 						default:
-							widget_area.find('.category, .specific, .popular_min').fadeOut();
+							widget_area.find('.poll, .board, .category, .popular_min, .limit').fadeOut();
 							widget_area.find('.widget-control-save').attr('disabled', 'disabled');
 						break;
 					}
@@ -127,7 +137,7 @@ class Pinpoll_Widget extends WP_Widget {
 			});
 		</script>
                 
-		<p><small>Display specific or random polls in an <a href="http://www.w3.org/TR/html4/present/frames.html#edef-IFRAME">iframe</a>. For plug-in details <a href="https://pinpoll.net/Plug-ins" target="_blank">click here</a>.</small></p>
+		<p><small>Display specific polls and boards or load random polls from a category in an <a href="http://www.w3.org/TR/html4/present/frames.html#edef-IFRAME">iframe</a>. For plug-in details <a href="https://pinpoll.net/Plug-ins" target="_blank">click here</a>.</small></p>
 		<p>
 			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:' ); ?></label> 
 			<input size="28" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo esc_attr($title); ?>" />
@@ -135,13 +145,18 @@ class Pinpoll_Widget extends WP_Widget {
         <p>
         	<select class="poll_type" id="<?php echo $this->get_field_id('poll_type'); ?>" name="<?php echo $this->get_field_name('poll_type'); ?>" >
             	<option value="" <?php echo strip_tags($instance['poll_type']) == "" ? 'selected="selected"' : ''; ?>>Select Type...</option>
-            	<option value="specific" <?php echo strip_tags($instance['poll_type']) == "specific" ? 'selected="selected"' : ''; ?>>Specific Poll</option>
-            	<option value="random" <?php echo strip_tags($instance['poll_type']) == "random" ? 'selected="selected"' : ''; ?>>Random Polls</option>
+            	<option value="poll" <?php echo strip_tags($instance['poll_type']) == "poll" ? 'selected="selected"' : ''; ?>>Specific Poll</option>
+            	<option value="board" <?php echo strip_tags($instance['poll_type']) == "board" ? 'selected="selected"' : ''; ?>>Specific Board</option>
+            	<option value="category" <?php echo strip_tags($instance['poll_type']) == "category" ? 'selected="selected"' : ''; ?>>Random Polls from Category</option>
             </select>
         </p>
-		<p class="specific hide">
+		<p class="poll hide">
 			<label for="<?php echo $this->get_field_id( 'poll_id' ); ?>"><?php _e( 'Poll ID:' ); ?></label>
 			<input size="28" id="<?php echo $this->get_field_id('poll_id'); ?>" name="<?php echo $this->get_field_name('poll_id'); ?>" type="text" value="<?php echo esc_attr($poll_id); ?>" />
+		</p>
+		<p class="board hide">
+			<label for="<?php echo $this->get_field_id( 'board_id' ); ?>"><?php _e( 'Board ID:' ); ?></label>
+			<input size="28" id="<?php echo $this->get_field_id('board_id'); ?>" name="<?php echo $this->get_field_name('board_id'); ?>" type="text" value="<?php echo esc_attr($board_id); ?>" />
 		</p>
 		<p class="category hide">
         	<select class="categories" id="<?php echo $this->get_field_id('category_id'); ?>" name="<?php echo $this->get_field_name('category_id'); ?>" >
@@ -156,7 +171,11 @@ class Pinpoll_Widget extends WP_Widget {
 		</p>
 		<p class="popular_min hide">
 			<label for="<?php echo $this->get_field_id( 'popular_min' ); ?>"><?php _e( 'Minimum Answers:' ); ?></label>&nbsp; 
-			<input size="6" id="<?php echo $this->get_field_id('popular_min'); ?>" name="<?php echo $this->get_field_name('popular_min'); ?>" type="text" value="<?php echo esc_attr($popular_min); ?>" />
+			<input size="4" id="<?php echo $this->get_field_id('popular_min'); ?>" name="<?php echo $this->get_field_name('popular_min'); ?>" type="text" value="<?php echo esc_attr($popular_min); ?>" />
+		</p>
+		<p class="limit hide">
+			<label for="<?php echo $this->get_field_id( 'limit' ); ?>"><?php _e( 'Maximum Polls:' ); ?></label>
+			<input size="4" id="<?php echo $this->get_field_id('limit'); ?>" name="<?php echo $this->get_field_name('limit'); ?>" type="text" value="<?php echo esc_attr($limit); ?>" />
 		</p>
         <hr style="margin:15px 0; color:#FFF; background-color:#FFF;" />
 		<p>
@@ -165,12 +184,12 @@ class Pinpoll_Widget extends WP_Widget {
 			<label for="<?php echo $this->get_field_id( 'height' ); ?>"><?php _e( 'Height:' ); ?></label> 
 			<input size="4" id="<?php echo $this->get_field_id('height'); ?>" name="<?php echo $this->get_field_name('height'); ?>" type="text" value="<?php echo esc_attr($height); ?>" />
 		</p>
-		<p><small>Hint: Set width &amp; height in pixels (e.g., 200px or 200) or relative (e.g., 20%).</small></p>
+		<p><small>Hint: Set width &amp; height as integer for pixels (e.g., 350).</small></p>
 		<p>
-			<label for="<?php echo $this->get_field_id( 'style' ); ?>"><?php _e( 'Custom CSS Style:' ); ?></label>
-			<input size="28" id="<?php echo $this->get_field_id('style'); ?>" name="<?php echo $this->get_field_name('style'); ?>" type="text" value="<?php echo esc_attr($style); ?>" />
+			<label for="<?php echo $this->get_field_id( 'colour' ); ?>"><?php _e( 'Custom Colour:' ); ?></label>
+			<input size="28" id="<?php echo $this->get_field_id('colour'); ?>" name="<?php echo $this->get_field_name('colour'); ?>" type="text" value="<?php echo esc_attr($colour); ?>" />
 		</p>
-        <p><small>Hint: Do not use quotes (e.g.,<i>align:left;</i>)</small></p>
+        <p><small>Hint: Use hex-code without # sign to adjust look &amp; feel (e.g., FF3366).</small></p>
         <input type="hidden" id="<?php echo $this->get_field_id('service_url_base'); ?>" name="<?php echo $this->get_field_name('service_url_base'); ?>" value="<?php echo esc_attr($service_url_base); ?>" />
         <input type="hidden" id="<?php echo $this->get_field_id('fallback_url_base'); ?>" name="<?php echo $this->get_field_name('fallback_url_base'); ?>" value="<?php echo esc_attr($fallback_url_base); ?>" />
 		<?php
@@ -186,20 +205,42 @@ class Pinpoll_Widget extends WP_Widget {
 		$instance['fallback_url_base'] = strip_tags($new_instance['fallback_url_base']);
 		
 		switch($new_instance['poll_type']) {
-			case 'random':
-				$instance['service_url'] = strip_tags($new_instance['service_url_base']."?category_id=".$new_instance['category_id']."&popular_min=".$new_instance['popular_min']);
-				$instance['fallback_url']= strip_tags($new_instance['fallback_url_base']."category?category_id=".$new_instance['category_id']);
-			break;
-			case 'specific': default:
+			case 'poll': default:
 				$instance['service_url'] = strip_tags($new_instance['service_url_base']."?id=".$new_instance['poll_id']);
 				$instance['fallback_url']= strip_tags($new_instance['fallback_url_base']."poll/".$new_instance['poll_id']);
 			break;	
+			case 'board': default:
+				$instance['service_url'] = strip_tags($new_instance['service_url_base']."?board_id=".$new_instance['board_id']);
+				$instance['fallback_url']= strip_tags($new_instance['fallback_url_base']."board?board_id=".$new_instance['board_id']);
+			break;	
+			case 'category':
+				$instance['service_url'] = strip_tags($new_instance['service_url_base']."?category_id=".$new_instance['category_id']."&popular_min=".$new_instance['popular_min']);
+				$instance['fallback_url']= strip_tags($new_instance['fallback_url_base']."category?category_id=".$new_instance['category_id']);
+			break;
 		}
 		
-		$instance['style'] = strip_tags($new_instance['style']);
+		if(strlen(strip_tags($new_instance['width'])) > 0) {
+			$instance['service_url'].="&width=".strip_tags($new_instance['width']);
+		}
+		
+		if(strlen(strip_tags($new_instance['height'])) > 0) {
+			$instance['service_url'].="&height=".strip_tags($new_instance['height']);
+		}
+		
+		if(strlen(strip_tags($new_instance['colour'])) > 0) {
+			$instance['service_url'].="&colour=".strip_tags($new_instance['colour']);
+		}
+		
+		if(strlen(strip_tags($new_instance['limit'])) > 0) {
+			$instance['service_url'].="&limit=".strip_tags($new_instance['limit']);
+		}
+				
 		$instance['poll_type'] = strip_tags($new_instance['poll_type']);
 		$instance['category_id'] = strip_tags($new_instance['category_id']);
+		$instance['colour'] = strip_tags($new_instance['colour']);
 		$instance['popular_min'] = strip_tags($new_instance['popular_min']);
+		$instance['limit'] = strip_tags($new_instance['limit']);
+		
 		return $instance;
 	}
 
@@ -224,7 +265,6 @@ function widget_pinpoll_on_page($text){
 		$others = "";
 		$others = ' width="' .($param[1] != "" ? $param[1] : 200) . '"';
 		$others .= ' height="' .($param[2] != "" ? $param[2] : 450) . '"';
-		$others .= ' style="' .($param[3] != "" ? $param[3] : ""). '"';
 		$others .= ' frameborder="no" scrolling="0"';			
 		//generate the iframe tag
 		$text = '<iframe src="'.$param[0].'"'.$others.'></iframe>';

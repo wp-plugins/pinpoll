@@ -2,7 +2,7 @@
 Contributors: PINPOLL
 Tags: poll, iframe, widget, polls, free, pinpoll, opinion
 Requires at least: 3.0
-Tested up to: 3.9.1
+Tested up to: 4.0
 Stable tag: 1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -10,22 +10,24 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Select or create polls at PINPOLL.net and include them in your Blog to increase traffic and user interaction - it's free!
 
 == Description ==
-This widget can display polls from pinpoll.net. You may create your own polls first to include them or choose from more than 3.000 existing polls from over 20 categories, one of which will perfectly match the contents of you blog. Show specific or random polls and set a minimum sample size. 
+This widget displays polls from pinpoll.net. You may create your own polls first to include them or choose from more than 3.000 existing polls from over 20 categories, one of which will perfectly match the contents of you blog. Show specific or random polls and set a minimum sample size. You may also limit the number of polls and apply your custom look and feel. 
 
-It’s free!
+It’s free to use! 
+
+Want to get paid for publishing it? Just get in touch: office@pinpoll.net
 
 == Installation ==
 1. Download and unzip pinpoll.zip 
 2. Upload the folder containing "pinpoll-widget.php" to the "/wp-content/plugins/" directory
 3. Activate the plug-in through the "Plugins" menu in WordPress
-4. To add a poll to a sidebar, browse to "Appearance > Widgets" and drag "PINPOLL" to desired sidebar. Configure the parameters such as a Poll ID for specific polls or the Sample Size for random polls and save your changes. You may as well select your preferred category. Language will be detected automatically.
-5. To add polls to any post we suggest to use the Code Generator ("Settings > PINPOLL") to simply copy the generated code and paste it to your post. Experienced users may simply use and adjust this snippet [pinpoll]service_url,width,height,style[/pinpoll]
+4. To add a poll to a sidebar, browse to "Appearance > Widgets" and drag "PINPOLL" to desired sidebar. Configure the parameters such as the ID for specific polls and boards or the Minimum Answers for random polls and save your changes. You may as well select your preferred category, limit the number of polls or apply your own look & feel. Language will be detected automatically.
+5. To add polls to any post we suggest to use the Code Generator ("Settings > PINPOLL") to simply copy the generated code and paste it to your post. Experienced users may simply use and adjust this snippet [pinpoll]service_url,width,height[/pinpoll]
 
 Some examples:
-[pinpoll]http://pinpoll.net/bookmarklet/getBanner?id=3480[/pinpoll] 
-[pinpoll]http://pinpoll.net/bookmarklet/getBanner?category_id=2&popular_min=100,200,450,margin:10px 0;[/pinpoll]. 
-[pinpoll]http://pinpoll.net/bookmarklet/getBanner?category_id=5,200,450[/pinpoll]. 
-[pinpoll]http://pinpoll.net/bookmarklet/getBanner?id=3480,200,450,border:1px solid #333;float:left;[/pinpoll] 
+[pinpoll]https://pinpoll.net/plugin/getPoll/?id=3480[/pinpoll] 
+[pinpoll]https://pinpoll.net/plugin/getPoll/?category_id=23&popular_min=100&limit=20&width=400&height=250,400,250[/pinpoll]. 
+[pinpoll]https://pinpoll.net/plugin/getPoll/?board_id=202&width=400&height=400,400,400[/pinpoll]. 
+[pinpoll]https://pinpoll.net/plugin/getPoll/?id=3480&colour=ff3366,500,500[/pinpoll] 
 
 Please ensure that the URL complies with this format to avoid problems with the underlying webservice.
 
@@ -45,7 +47,7 @@ Just drop us a line: support@pinpoll.net - we appreciate any new ideas to make P
 1. PINPOLL WordPress Widget - it's free!
 2. Activated widget in the plug-in section of WordPress
 3. Widget dragged to sidebar of the active theme, using a specific poll to be displayed
-4. Widget dragged to sidebar of the active theme, using a random poll from a specific category to be displayed
+4. Widget dragged to sidebar of the active theme, using random polls from a specific category to be displayed
 5. Settings of the Code Generator and code to be copied from textfield
 6. Code snippet is included in post
 7. Screenshot of polls displayed in a post and the sidebar
@@ -66,6 +68,9 @@ Just drop us a line: support@pinpoll.net - we appreciate any new ideas to make P
 
 = 1.1 =
 * Added full SSL support to make calls more secure 
+
+= 2.0 =
+* New layout and customisation options 
 
 == Upgrade Notice ==
 * This is the very first version, we keep improving the widget on a regular basis - stay tuned!
