@@ -3,7 +3,7 @@
 Plugin Name: PINPOLL
 Plugin URI: https://pinpoll.net/Plug-ins/
 Description: Select or create polls at PINPOLL.net and include them in your Blog to increase traffic and user interaction - it's free!
-Version: 2.0
+Version: 2.1
 Min WP Version: 3.0
 Author: Tobias Oberascher
 Author URI: https://pinpoll.net/Tobias
@@ -74,8 +74,7 @@ class Pinpoll_Widget extends WP_Widget {
 				'poll_type' => '',
 				'board_id' => 0,
 				'category_id' => 0,
-				'popular_min' => 0,
-				'limit' => 50
+				'popular_min' => 0
 			) 
 		);
 		$title = strip_tags($instance['title']);
@@ -91,7 +90,6 @@ class Pinpoll_Widget extends WP_Widget {
 		$board_id = strip_tags($instance['board_id']);
 		$category_id = strip_tags($instance['category_id']);
 		$popular_min = strip_tags($instance['popular_min']);
-		$limit = strip_tags($instance['limit']);
 		?>
         
         <script type="text/javascript">
@@ -105,23 +103,23 @@ class Pinpoll_Widget extends WP_Widget {
 						case 'poll':
 							widget_area.find('.category, .board').hide();
 							widget_area.find('.poll').fadeIn();
-							widget_area.find('.popular_min, .limit').hide();
+							widget_area.find('.popular_min').hide();
 							widget_area.find('.widget-control-save').removeAttr('disabled');
 						break;
 						case 'board':
 							widget_area.find('.category, .poll').hide();
 							widget_area.find('.board').fadeIn();
-							widget_area.find('.popular_min, .limit').hide();
+							widget_area.find('.popular_min').hide();
 							widget_area.find('.widget-control-save').removeAttr('disabled');
 						break;
 						case 'category':
 							widget_area.find('.poll, .board').hide();
-							widget_area.find('.popular_min, .limit').fadeIn();
+							widget_area.find('.popular_min').fadeIn();
 							widget_area.find('.category').fadeIn();
 							widget_area.find('.widget-control-save').removeAttr('disabled');
 						break;
 						default:
-							widget_area.find('.poll, .board, .category, .popular_min, .limit').fadeOut();
+							widget_area.find('.poll, .board, .category, .popular_min').fadeOut();
 							widget_area.find('.widget-control-save').attr('disabled', 'disabled');
 						break;
 					}
@@ -172,10 +170,6 @@ class Pinpoll_Widget extends WP_Widget {
 		<p class="popular_min hide">
 			<label for="<?php echo $this->get_field_id( 'popular_min' ); ?>"><?php _e( 'Minimum Answers:' ); ?></label>&nbsp; 
 			<input size="4" id="<?php echo $this->get_field_id('popular_min'); ?>" name="<?php echo $this->get_field_name('popular_min'); ?>" type="text" value="<?php echo esc_attr($popular_min); ?>" />
-		</p>
-		<p class="limit hide">
-			<label for="<?php echo $this->get_field_id( 'limit' ); ?>"><?php _e( 'Maximum Polls:' ); ?></label>
-			<input size="4" id="<?php echo $this->get_field_id('limit'); ?>" name="<?php echo $this->get_field_name('limit'); ?>" type="text" value="<?php echo esc_attr($limit); ?>" />
 		</p>
         <hr style="margin:15px 0; color:#FFF; background-color:#FFF;" />
 		<p>
@@ -230,16 +224,11 @@ class Pinpoll_Widget extends WP_Widget {
 		if(strlen(strip_tags($new_instance['colour'])) > 0) {
 			$instance['service_url'].="&colour=".strip_tags($new_instance['colour']);
 		}
-		
-		if(strlen(strip_tags($new_instance['limit'])) > 0) {
-			$instance['service_url'].="&limit=".strip_tags($new_instance['limit']);
-		}
 				
 		$instance['poll_type'] = strip_tags($new_instance['poll_type']);
 		$instance['category_id'] = strip_tags($new_instance['category_id']);
 		$instance['colour'] = strip_tags($new_instance['colour']);
 		$instance['popular_min'] = strip_tags($new_instance['popular_min']);
-		$instance['limit'] = strip_tags($new_instance['limit']);
 		
 		return $instance;
 	}

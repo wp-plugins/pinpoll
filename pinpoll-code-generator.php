@@ -55,11 +55,6 @@ class pinpoll_settings_config {
               'description' => "If you choose to include random polls, you may limit their minimum sample size.",
               'default_value' => "0"
             ),
-            'limit' => array (
-              'label' => "Maximum Polls",
-              'description' => "If you choose to include random polls, you may limit the maximum number of polls.",
-              'default_value' => "50"
-            ),
 		    'width' => array (
               'label' => "Width",
               'description' => "Set width as integer for pixels (e.g., 350).",
@@ -177,10 +172,8 @@ class pinpoll_settings {
 		$width = $options['text_string'];
 		$options = get_option($pinpoll_settings['group'].'_'.'colour');		
 		$colour = $options['text_string'];
-		$options = get_option($pinpoll_settings['group'].'_'.'limit');		
-		$limit = $options['text_string'];
 		
-		$url.= "&width=".$width."&height=".$height."&colour=".$colour."&limit=".$limit;
+		$url.= "&width=".$width."&height=".$height."&colour=".$colour;
 	
 		echo "<h3>Copy this code and paste it to the post of your choice:</h3>";
 		echo '<textarea style="width:500px; height:50px; font-family:courier; font-size:13px;" name="code" id="code">';
