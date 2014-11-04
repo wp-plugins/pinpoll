@@ -3,14 +3,14 @@ Contributors: PINPOLL
 Tags: poll, iframe, widget, polls, free, pinpoll, opinion
 Requires at least: 3.0
 Tested up to: 4.0
-Stable tag: 2.1
+Stable tag: 2.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Select or create polls at PINPOLL.net and include them in your Blog to increase traffic and user interaction - it's free!
+Select or create polls at pinpoll.com and include them in your Blog to increase traffic and user interaction - it's free!
 
 == Description ==
-This widget displays polls from pinpoll.net. You may create your own polls first to include them or choose from more than 3.000 existing polls from over 20 categories, one of which will perfectly match the contents of you blog. Show specific or random polls and set a minimum sample size. You may also limit the number of polls and apply your custom look and feel. 
+This widget displays polls from pinpoll.com. You may create your own polls first to include them or choose from more than 3.000 existing polls from over 20 categories, one of which will perfectly match the contents of you blog. Show specific or random polls and set a minimum sample size. You may also limit the number of polls and apply your custom look and feel. 
 
 It’s free to use! 
 
@@ -24,10 +24,10 @@ Want to get paid for publishing it? Just get in touch: office@pinpoll.net
 5. To add polls to any post we suggest to use the Code Generator ("Settings > PINPOLL") to simply copy the generated code and paste it to your post. Experienced users may simply use and adjust this snippet [pinpoll]service_url,width,height[/pinpoll]
 
 Some examples:
-[pinpoll]https://pinpoll.net/plugin/getPoll/?id=3480[/pinpoll] 
-[pinpoll]https://pinpoll.net/plugin/getPoll/?category_id=23&popular_min=100&limit=20&width=400&height=250,400,250[/pinpoll]. 
-[pinpoll]https://pinpoll.net/plugin/getPoll/?board_id=202&width=400&height=400,400,400[/pinpoll]. 
-[pinpoll]https://pinpoll.net/plugin/getPoll/?id=3480&colour=ff3366,500,500[/pinpoll] 
+[pinpoll]https://pinpoll.com/plugin/getPoll/?id=3480[/pinpoll] 
+[pinpoll]https://pinpoll.com/plugin/getPoll/?category_id=23&popular_min=100&limit=20&width=400&height=250,400,250[/pinpoll]. 
+[pinpoll]https://pinpoll.com/plugin/getPoll/?board_id=202&width=400&height=400,400,400[/pinpoll]. 
+[pinpoll]https://pinpoll.com/plugin/getPoll/?id=3480&colour=ff3366,500,500[/pinpoll] 
 
 Please ensure that the URL complies with this format to avoid problems with the underlying webservice.
 

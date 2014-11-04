@@ -1,12 +1,12 @@
 <?php
 /*
 Plugin Name: PINPOLL
-Plugin URI: https://pinpoll.net/Plug-ins/
-Description: Select or create polls at PINPOLL.net and include them in your Blog to increase traffic and user interaction - it's free!
-Version: 2.1
+Plugin URI: https://pinpoll.com/Plug-ins/
+Description: Select or create polls at pinpoll.com and include them in your Blog to increase traffic and user interaction - it's free!
+Version: 2.2
 Min WP Version: 3.0
 Author: Tobias Oberascher
-Author URI: https://pinpoll.net/Tobias
+Author URI: https://pinpoll.com/Tobias
 */
 ?>
 <?php
@@ -19,7 +19,7 @@ add_filter( 'plugin_action_links', 'pinpoll_plugin_action_links', 10, 2 );
 class Pinpoll_Widget extends WP_Widget {
 
 	function __construct() {	   
-		$widget_ops = array('classname' => 'Pinpoll_Widget', 'description' => "This widget displays polls from pinpoll.net inside your blog." );
+		$widget_ops = array('classname' => 'Pinpoll_Widget', 'description' => "This widget displays polls from pinpoll.com inside your blog." );
 		$control_ops = array('width' => 350, 'height' => 350);
 		self::setCategories();
 		parent::__construct('pinpoll', __('PINPOLL'), $widget_ops, $control_ops);
@@ -37,7 +37,7 @@ class Pinpoll_Widget extends WP_Widget {
 
 	protected static function setCategories() {
 		
-		$url = "https://pinpoll.net/plugin/getCategories";
+		$url = "https://pinpoll.com/plugin/getCategories";
 	
 		$ch = curl_init();
 		
@@ -66,10 +66,10 @@ class Pinpoll_Widget extends WP_Widget {
 				'width' => 350, 
 				'height' => 350, 
 				'poll_id' => 3480,  //The default poll
-				'service_url_base' => 'https://pinpoll.net/plugin/getPoll/', 
-				'service_url' => 'https://pinpoll.net/plugin/getPoll/?id=3480', 
-				'fallback_url_base' => 'https://pinpoll.net/', 
-				'fallback_url' => 'https://pinpoll.net/poll/3480',
+				'service_url_base' => 'https://pinpoll.com/plugin/getPoll/', 
+				'service_url' => 'https://pinpoll.com/plugin/getPoll/?id=3480', 
+				'fallback_url_base' => 'https://pinpoll.com/', 
+				'fallback_url' => 'https://pinpoll.com/poll/3480',
 				'colour' => '',
 				'poll_type' => '',
 				'board_id' => 0,
@@ -135,7 +135,7 @@ class Pinpoll_Widget extends WP_Widget {
 			});
 		</script>
                 
-		<p><small>Display specific polls and boards or load random polls from a category in an <a href="http://www.w3.org/TR/html4/present/frames.html#edef-IFRAME">iframe</a>. For plug-in details <a href="https://pinpoll.net/Plug-ins" target="_blank">click here</a>.</small></p>
+		<p><small>Display specific polls and boards or load random polls from a category in an <a href="http://www.w3.org/TR/html4/present/frames.html#edef-IFRAME">iframe</a>. For plug-in details <a href="https://pinpoll.com/Plug-ins" target="_blank">click here</a>.</small></p>
 		<p>
 			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:' ); ?></label> 
 			<input size="28" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo esc_attr($title); ?>" />

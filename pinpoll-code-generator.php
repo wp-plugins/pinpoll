@@ -37,12 +37,12 @@ class pinpoll_settings_config {
             ),
             'poll_id' => array (
               'label' => "Specific Poll",
-              'description' => "If you choose to include a specific poll, enter the ID of such existing poll from pinpoll.net.",
+              'description' => "If you choose to include a specific poll, enter the ID of such existing poll from pinpoll.com.",
               'default_value' => "3480"
             ),
 			'board_id' => array(
               'label' => "Specific Board",
-              'description' => "If you choose to include a specific board, enter the ID of such existing board from pinpoll.net.",
+              'description' => "If you choose to include a specific board, enter the ID of such existing board from pinpoll.com.",
               'default_value' => "0"
             ),
 			'category_id' => array(
@@ -88,7 +88,7 @@ class pinpoll_settings_config {
  	
 	public static function setCategories() {
 		
-		$url = "https://pinpoll.net/plugin/getCategories";
+		$url = "https://pinpoll.com/plugin/getCategories";
 	
 		$ch = curl_init();
 		
@@ -143,7 +143,7 @@ class pinpoll_settings {
 		printf('<p class="submit"><input type="submit" name="Submit" value="%s" /></p></form>',__('Get Code!'));
 			
 		//Produce the Code
-		$service_url_base =	"https://pinpoll.net/plugin/getPoll/";
+		$service_url_base =	"https://pinpoll.com/plugin/getPoll/";
 		$options = get_option($pinpoll_settings['group'].'_'.'poll_type');		
 			
 		switch($options['text_string']) {
