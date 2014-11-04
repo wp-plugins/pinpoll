@@ -37,12 +37,12 @@ class pinpoll_settings_config {
             ),
             'poll_id' => array (
               'label' => "Specific Poll",
-              'description' => "If you choose to include a specific poll, enter the ID of such existing poll from pinpoll.net.",
+              'description' => "If you choose to include a specific poll, enter the ID of such existing poll from pinpoll.com.",
               'default_value' => "3480"
             ),
 			'board_id' => array(
               'label' => "Specific Board",
-              'description' => "If you choose to include a specific board, enter the ID of such existing board from pinpoll.net.",
+              'description' => "If you choose to include a specific board, enter the ID of such existing board from pinpoll.com.",
               'default_value' => "0"
             ),
 			'category_id' => array(
@@ -54,11 +54,6 @@ class pinpoll_settings_config {
               'label' => "Minimum Answers",
               'description' => "If you choose to include random polls, you may limit their minimum sample size.",
               'default_value' => "0"
-            ),
-            'limit' => array (
-              'label' => "Maximum Polls",
-              'description' => "If you choose to include random polls, you may limit the maximum number of polls.",
-              'default_value' => "50"
             ),
 		    'width' => array (
               'label' => "Width",
@@ -93,7 +88,7 @@ class pinpoll_settings_config {
  	
 	public static function setCategories() {
 		
-		$url = "https://pinpoll.net/plugin/getCategories";
+		$url = "https://pinpoll.com/plugin/getCategories";
 	
 		$ch = curl_init();
 		
@@ -148,7 +143,7 @@ class pinpoll_settings {
 		printf('<p class="submit"><input type="submit" name="Submit" value="%s" /></p></form>',__('Get Code!'));
 			
 		//Produce the Code
-		$service_url_base =	"https://pinpoll.net/plugin/getPoll/";
+		$service_url_base =	"https://pinpoll.com/plugin/getPoll/";
 		$options = get_option($pinpoll_settings['group'].'_'.'poll_type');		
 			
 		switch($options['text_string']) {
@@ -177,10 +172,8 @@ class pinpoll_settings {
 		$width = $options['text_string'];
 		$options = get_option($pinpoll_settings['group'].'_'.'colour');		
 		$colour = $options['text_string'];
-		$options = get_option($pinpoll_settings['group'].'_'.'limit');		
-		$limit = $options['text_string'];
 		
-		$url.= "&width=".$width."&height=".$height."&colour=".$colour."&limit=".$limit;
+		$url.= "&width=".$width."&height=".$height."&colour=".$colour;
 	
 		echo "<h3>Copy this code and paste it to the post of your choice:</h3>";
 		echo '<textarea style="width:500px; height:50px; font-family:courier; font-size:13px;" name="code" id="code">';
