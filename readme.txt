@@ -14,7 +14,7 @@ This widget displays polls from pinpoll.com. You may create your own polls first
 
 It’s free to use! 
 
-Want to get paid for publishing it? Just get in touch: office@pinpoll.net
+Want to get paid for publishing it? Just get in touch: office@pinpoll.com
 
 == Installation ==
 1. Download and unzip pinpoll.zip 
@@ -40,7 +40,7 @@ It’s absolutely free of charge to create your own polls or display existing po
 PINPOLL uses intelligent algorithms to detect your native language - you don't have to do anything here.
 
 = How can I request more features? =
-Just drop us a line: support@pinpoll.net - we appreciate any new ideas to make PINPOLL become the most engaging community to share polls.
+Just drop us a line: support@pinpoll.com - we appreciate any new ideas to make PINPOLL become the most engaging community to share polls.
 
 == Screenshots ==
 
@@ -75,6 +75,9 @@ Just drop us a line: support@pinpoll.net - we appreciate any new ideas to make P
 = 2.1 =
 * Removed max answers field, added eternal slider, faster (ad-hoc) loading
 
+= 2.2 =
+* New base domain is pinpoll.com
+
 == Upgrade Notice ==
 * This is the very first version, we keep improving the widget on a regular basis - stay tuned!
-* Please report any bugs to support@pinpoll.net
+* Please report any bugs to support@pinpoll.com
