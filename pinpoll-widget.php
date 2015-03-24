@@ -1,12 +1,12 @@
 <?php
 /*
-Plugin Name: PINPOLL
+Plugin Name: Pinpoll
 Plugin URI: https://pinpoll.com/Plug-ins/
-Description: Select or create polls at pinpoll.com and include them in your Blog to increase traffic and user interaction - it's free!
-Version: 2.2
+Description: Create polls on pinpoll.com and include them in your blog to generate relevant stats and increase user interaction - it's free!
+Version: 2.3
 Min WP Version: 3.0
 Author: Tobias Oberascher
-Author URI: https://pinpoll.com/Tobias
+Author URI: https://pinpoll.com/
 */
 ?>
 <?php
@@ -22,7 +22,7 @@ class Pinpoll_Widget extends WP_Widget {
 		$widget_ops = array('classname' => 'Pinpoll_Widget', 'description' => "This widget displays polls from pinpoll.com inside your blog." );
 		$control_ops = array('width' => 350, 'height' => 350);
 		self::setCategories();
-		parent::__construct('pinpoll', __('PINPOLL'), $widget_ops, $control_ops);
+		parent::__construct('pinpoll', __('Pinpoll'), $widget_ops, $control_ops);
 	}	
  	
 	protected static $dropdown_options = array();
@@ -74,7 +74,9 @@ class Pinpoll_Widget extends WP_Widget {
 				'poll_type' => '',
 				'board_id' => 0,
 				'category_id' => 0,
-				'popular_min' => 0
+				'popular_min' => 0,
+				'description' => 1,
+				'map' => 1
 			) 
 		);
 		$title = strip_tags($instance['title']);
@@ -90,6 +92,8 @@ class Pinpoll_Widget extends WP_Widget {
 		$board_id = strip_tags($instance['board_id']);
 		$category_id = strip_tags($instance['category_id']);
 		$popular_min = strip_tags($instance['popular_min']);
+		$description = strip_tags($instance['description']);
+		$map = strip_tags($instance['map']);
 		?>
         
         <script type="text/javascript">
@@ -184,12 +188,21 @@ class Pinpoll_Widget extends WP_Widget {
 			<input size="28" id="<?php echo $this->get_field_id('colour'); ?>" name="<?php echo $this->get_field_name('colour'); ?>" type="text" value="<?php echo esc_attr($colour); ?>" />
 		</p>
         <p><small>Hint: Use hex-code without # sign to adjust look &amp; feel (e.g., FF3366).</small></p>
+		<p>
+			<label for="<?php echo $this->get_field_id( 'description' ); ?>"><?php _e( 'Description:' ); ?></label>
+			<input id="<?php echo $this->get_field_id('description'); ?>" name="<?php echo $this->get_field_name('description'); ?>" type="checkbox" value="<?php echo esc_attr($description); ?>" <?php echo strip_tags($instance['description']) == 1 ? 'checked="checked"' : ''; ?> />
+		</p>
+		<p>
+			<label for="<?php echo $this->get_field_id( 'map' ); ?>"><?php _e( 'Map:' ); ?></label>
+			<input id="<?php echo $this->get_field_id('map'); ?>" name="<?php echo $this->get_field_name('map'); ?>" type="checkbox" value="<?php echo esc_attr($map); ?>"  <?php echo strip_tags($instance['map']) == 1 ? 'checked="checked"' : ''; ?> />
+		</p>
         <input type="hidden" id="<?php echo $this->get_field_id('service_url_base'); ?>" name="<?php echo $this->get_field_name('service_url_base'); ?>" value="<?php echo esc_attr($service_url_base); ?>" />
         <input type="hidden" id="<?php echo $this->get_field_id('fallback_url_base'); ?>" name="<?php echo $this->get_field_name('fallback_url_base'); ?>" value="<?php echo esc_attr($fallback_url_base); ?>" />
 		<?php
 	}
 	
 	function update($new_instance, $old_instance) {
+				
 		$instance = $old_instance;
 		$instance['title'] = strip_tags($new_instance['title']);
 		$instance['width'] = trim(strip_tags($new_instance['width'])) != "" ? strip_tags($new_instance['width']) : 200;
@@ -223,6 +236,22 @@ class Pinpoll_Widget extends WP_Widget {
 		
 		if(strlen(strip_tags($new_instance['colour'])) > 0) {
 			$instance['service_url'].="&colour=".strip_tags($new_instance['colour']);
+		}
+		
+		if(array_key_exists("description", $new_instance)) {
+			$instance['service_url'].="&description=1";
+			$instance['description'] = 1;
+		}else{
+			$instance['service_url'].="&description=0";
+			$instance['description'] = 0;
+		}
+		
+		if(array_key_exists("map", $new_instance)) {
+			$instance['service_url'].="&map=1";
+			$instance['map'] = 1;
+		}else{
+			$instance['service_url'].="&map=0";
+			$instance['map'] = 0;
 		}
 				
 		$instance['poll_type'] = strip_tags($new_instance['poll_type']);

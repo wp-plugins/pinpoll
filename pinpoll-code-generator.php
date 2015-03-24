@@ -21,8 +21,8 @@ class pinpoll_settings_config {
 	 
 	//  DISPLAY SETTINGS
 	var $title = "Code Generator";  
-	var $intro_text = 'This page allows you to generate the required HTML code to include the <a href="http://wordpress.org/plugins/pinpoll/" target="_blank">PINPOLL Widget</a> within any post.'; 
-	var $nav_title = "PINPOLL"; // how page is listed on left-hand Settings panel
+	var $intro_text = 'This page allows you to generate the required HTML code to include the <a href="http://wordpress.org/plugins/pinpoll/" target="_blank">Pinpoll Widget</a> within any post.'; 
+	var $nav_title = "Pinpoll"; // how page is listed on left-hand Settings panel
 
 	//  SECTIONS
 	var $sections = array(
@@ -71,6 +71,18 @@ class pinpoll_settings_config {
               'label' => "Custom Colour",
               'description' => "Use hex-code without # sign to adjust look &amp; feel (e.g., FF3366).",
               'default_value' => ""
+            ),
+            'description' => array (
+              'label' => "Show Description",
+              'description' => "Show or hide a poll's description.",
+              'checkbox' => "1",
+              'default_value' => "1"
+            ),
+            'map' => array (
+              'label' => "Show Map",
+              'description' => "Show or hide results on a map.",
+              'checkbox' => "1",
+              'default_value' => "1"
             )
           )
 		)
@@ -172,8 +184,12 @@ class pinpoll_settings {
 		$width = $options['text_string'];
 		$options = get_option($pinpoll_settings['group'].'_'.'colour');		
 		$colour = $options['text_string'];
+		$options = get_option($pinpoll_settings['group'].'_'.'description');		
+		$description = isset($options['text_string']) ? 1 : 0;
+		$options = get_option($pinpoll_settings['group'].'_'.'map');		
+		$map = isset($options['text_string']) ? 1 : 0;
 		
-		$url.= "&width=".$width."&height=".$height."&colour=".$colour;
+		$url.= "&width=".$width."&height=".$height."&colour=".$colour."&description=".$description."&map=".$map;
 	
 		echo "<h3>Copy this code and paste it to the post of your choice:</h3>";
 		echo '<textarea style="width:500px; height:50px; font-family:courier; font-size:13px;" name="code" id="code">';
@@ -188,7 +204,7 @@ class pinpoll_settings {
 		foreach ($pinpoll_settings["sections"] as $section_key=>$section_value) {
 			add_settings_section($section_key, $section_value['title'], array( &$this, 'plugin_section_text'), $pinpoll_settings['page_name'], $section_value);
 			foreach ($section_value['fields'] as $field_key=>$field_value) {
-				$function = (!empty($field_value['dropdown'])) ? array( &$this, 'plugin_setting_dropdown' ) : array( &$this, 'plugin_setting_string' );
+				$function = (!empty($field_value['dropdown'])) ? array( &$this, 'plugin_setting_dropdown' ) : (!empty($field_value['checkbox']) ? array( &$this, 'plugin_setting_checkbox' ) : array( &$this, 'plugin_setting_string' ) );
 				$function = (!empty($field_value['function'])) ? $field_value['function'] : $function;
 				$callback = (!empty($field_value['callback'])) ? $field_value['callback'] : NULL;
 				add_settings_field($pinpoll_settings['group'].'_'.$field_key, $field_value['label'], $function, $pinpoll_settings['page_name'], $section_key, array_merge($field_value,array('name' => $pinpoll_settings['group'].'_'.$field_key)));
@@ -211,6 +227,17 @@ class pinpoll_settings {
 		(!empty ($value['suffix'])) ? $value['suffix'] : NULL,
 		(!empty ($value['description'])) ? sprintf("<em>%s</em>",$value['description']) : null);
 	}
+ 
+	function plugin_setting_checkbox($value = null) {
+		$options = get_option($value['name']);
+		$default_value = (!empty ($value['default_value'])) ? $value['default_value'] : null;
+		$current_value = (isset($options['text_string'])) ? 1 : 0;
+		printf('<input id="%s" type="checkbox" name="%1$s[text_string]" %3$s size="40" /> %4$s',
+		$value['name'],
+		(!empty ($options['text_string'])) ? $options['text_string'] : $default_value,
+		($current_value == 1) ? ' checked="checked"' : null,
+		(!empty ($value['description'])) ? sprintf("<em>%s</em>",$value['description']) : null);
+	} 
  
 	function plugin_setting_dropdown($value = null) {
 		global $pinpoll_settings;
