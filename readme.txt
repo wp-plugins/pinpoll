@@ -3,11 +3,11 @@ Contributors: Tobias Oberascher
 Tags: opinion, analytics, profiling, dashboard, cockpit, feedback, free
 Requires at least: 3.0
 Tested up to: 4.1.1
-Stable tag: 2.4
+Stable tag: 2.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Create polls. Embed polls. Know your audience and customers. It's free!
+Create polls. Embed polls. Know your audience and customers.
 
 == Description ==
 This widget displays polls from pinpoll.com. Create your own polls or choose from more than 3.000 existing polls from over 20 categories, one of which will perfectly match the contents of you blog. Show specific or random polls and set a minimum sample size. You may also limit the number of polls and apply your custom look and feel. You can even show the results on a map.
