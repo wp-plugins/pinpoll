@@ -1,13 +1,13 @@
 === Pinpoll Widget ===
 Contributors: Tobias Oberascher
-Tags: poll, iframe, widget, polls, free, pinpoll, opinion
+Tags: opinion, analytics, profiling, dashboard, cockpit, feedback, free
 Requires at least: 3.0
 Tested up to: 4.1.1
 Stable tag: 2.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Create polls on pinpoll.com and include them in your blog to generate relevant stats and increase user interaction - it's free!
+Create polls. Embed polls. Know your audience and customers. It's free!
 
 == Description ==
 This widget displays polls from pinpoll.com. Create your own polls or choose from more than 3.000 existing polls from over 20 categories, one of which will perfectly match the contents of you blog. Show specific or random polls and set a minimum sample size. You may also limit the number of polls and apply your custom look and feel. You can even show the results on a map.
@@ -49,6 +49,12 @@ Just drop us a line: support@pinpoll.com - we appreciate any new ideas to make P
 3. Infer deep insights of your audience from the current result.
 4. Screenshot of an unanswered poll on NYT.
 5. Screenshot of an answered poll on LinkedIn.
+6. Activated widget in the plug-in section of WordPress.
+7. Widget dragged to sidebar of the active theme, using a specific poll to be displayed.
+8. Widget dragged to sidebar of the active theme, using random polls from a specific category to be displayed.
+9. Settings of the Code Generator and code to be copied from a textfield.
+10. Code snippet included in a post.
+11. Screenshot of polls displayed in a post and the sidebar.
 
 == Changelog ==
 

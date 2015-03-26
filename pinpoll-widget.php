@@ -2,8 +2,8 @@
 /*
 Plugin Name: Pinpoll
 Plugin URI: https://pinpoll.com/Plug-ins/
-Description: Create polls on pinpoll.com and include them in your blog to generate relevant stats and increase user interaction - it's free!
-Version: 2.3
+Description: Create polls. Embed polls. Know your audience and customers. It's free!
+Version: 2.4
 Min WP Version: 3.0
 Author: Tobias Oberascher
 Author URI: https://pinpoll.com/
