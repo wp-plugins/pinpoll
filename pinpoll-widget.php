@@ -2,7 +2,7 @@
 /*
 Plugin Name: Pinpoll
 Plugin URI: https://pinpoll.com/Plug-ins/
-Description: Create polls. Embed polls. Know your audience and customers. It's free!
+Description: Create polls. Embed polls. Know your audience and customers.
 Version: 2.4
 Min WP Version: 3.0
 Author: Tobias Oberascher
