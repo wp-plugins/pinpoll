@@ -45,12 +45,16 @@ Just drop us a line: support@pinpoll.com - we appreciate any new ideas to make P
 == Screenshots ==
 
 1. Pinpoll WordPress Widget - it's free!
-2. Activated widget in the plug-in section of WordPress.
-3. Widget dragged to sidebar of the active theme, using a specific poll to be displayed.
-4. Widget dragged to sidebar of the active theme, using random polls from a specific category to be displayed.
-5. Settings of the Code Generator and code to be copied from a textfield.
-6. Code snippet included in a post.
-7. Screenshot of polls displayed in a post and the sidebar.
+2. Receive updates in your personal dashboard.
+3. Infer deep insights of your audience from the current result.
+4. Screenshot of an unanswered poll on NYT.
+5. Screenshot of an answered poll on LinkedIn.
+6. Activated widget in the plug-in section of WordPress.
+7. Widget dragged to sidebar of the active theme, using a specific poll to be displayed.
+8. Widget dragged to sidebar of the active theme, using random polls from a specific category to be displayed.
+9. Settings of the Code Generator and code to be copied from a textfield.
+10. Code snippet included in a post.
+11. Screenshot of polls displayed in a post and the sidebar.
 
 == Changelog ==
 
