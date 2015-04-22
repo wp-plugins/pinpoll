@@ -2,7 +2,7 @@
 Contributors: Tobias Oberascher
 Tags: opinion, analytics, profiling, dashboard, cockpit, feedback, free
 Requires at least: 3.0
-Tested up to: 4.1.1
+Tested up to: 4.1.2
 Stable tag: 2.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -84,6 +84,9 @@ Just drop us a line: support@pinpoll.com - we appreciate any new ideas to make P
 
 = 2.3 =
 * Added new configuration options
+
+= 2.4 =
+* New tags, descriptions and screenshots
 
 == Upgrade Notice ==
 * This is the very first version, we keep improving the widget on a regular basis - stay tuned!
