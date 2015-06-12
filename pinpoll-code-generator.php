@@ -55,12 +55,6 @@ class pinpoll_settings_config {
               'description' => "If you choose to include random polls, you may limit their minimum sample size.",
               'default_value' => "0"
             ),
-		    'width' => array (
-              'label' => "Width",
-              'description' => "Set width as integer for pixels (e.g., 350).",
-              'length' => "3",
-              'default_value' => "350"
-            ),
 			'height' => array (
               'label' => "Height",
               'description' => "Set height as integer for pixels (e.g., 350).",
@@ -180,8 +174,6 @@ class pinpoll_settings {
 		
 		$options = get_option($pinpoll_settings['group'].'_'.'height');		
 		$height = $options['text_string'];
-		$options = get_option($pinpoll_settings['group'].'_'.'width');		
-		$width = $options['text_string'];
 		$options = get_option($pinpoll_settings['group'].'_'.'colour');		
 		$colour = $options['text_string'];
 		$options = get_option($pinpoll_settings['group'].'_'.'description');		
@@ -189,11 +181,11 @@ class pinpoll_settings {
 		$options = get_option($pinpoll_settings['group'].'_'.'map');		
 		$map = isset($options['text_string']) ? 1 : 0;
 		
-		$url.= "&width=".$width."&height=".$height."&colour=".$colour."&description=".$description."&map=".$map;
+		$url.= "&height=".$height."&colour=".$colour."&description=".$description."&map=".$map;
 	
 		echo "<h3>Copy this code and paste it to the post of your choice:</h3>";
 		echo '<textarea style="width:500px; height:50px; font-family:courier; font-size:13px;" name="code" id="code">';
-		printf('[pinpoll]%s,%s,%s[/pinpoll]', $url, $width, $height);
+		printf('[pinpoll]%s,%s[/pinpoll]', $url, $height);
 		echo "</textarea>";
 		
 		echo '</div><pre>';

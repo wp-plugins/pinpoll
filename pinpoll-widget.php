@@ -1,12 +1,12 @@
 <?php
 /*
 Plugin Name: Pinpoll
-Plugin URI: https://pinpoll.com/Plug-ins/
+Plugin URI: https://pinpoll.com
 Description: Create polls. Embed polls. Know your audience and customers.
-Version: 2.4
+Version: 2.5
 Min WP Version: 3.0
 Author: Tobias Oberascher
-Author URI: https://pinpoll.com/
+Author URI: https://pinpoll.com
 */
 ?>
 <?php
@@ -20,7 +20,7 @@ class Pinpoll_Widget extends WP_Widget {
 
 	function __construct() {	   
 		$widget_ops = array('classname' => 'Pinpoll_Widget', 'description' => "This widget displays polls from pinpoll.com inside your blog." );
-		$control_ops = array('width' => 350, 'height' => 350);
+		$control_ops = array('height' => 350);
 		self::setCategories();
 		parent::__construct('pinpoll', __('Pinpoll'), $widget_ops, $control_ops);
 	}	
@@ -63,12 +63,11 @@ class Pinpoll_Widget extends WP_Widget {
 			(array) $instance, 
 			array( 
 				'title' => 'Share Opinion.', 
-				'width' => 350, 
 				'height' => 350, 
 				'poll_id' => 3480,  //The default poll
-				'service_url_base' => 'https://pinpoll.com/plugin/getPoll/', 
-				'service_url' => 'https://pinpoll.com/plugin/getPoll/?id=3480', 
-				'fallback_url_base' => 'https://pinpoll.com/', 
+				'service_url_base' => 'https://pinpoll.com/plugin', 
+				'service_url' => 'https://pinpoll.com/plugin?id=3480', 
+				'fallback_url_base' => 'https://pinpoll.com', 
 				'fallback_url' => 'https://pinpoll.com/poll/3480',
 				'colour' => '',
 				'poll_type' => '',
@@ -80,7 +79,6 @@ class Pinpoll_Widget extends WP_Widget {
 			) 
 		);
 		$title = strip_tags($instance['title']);
-		$width = strip_tags($instance['width']);
 		$height = strip_tags($instance['height']);
 		$poll_id = strip_tags($instance['poll_id']);
 		$service_url_base = strip_tags($instance['service_url_base']);
@@ -139,7 +137,7 @@ class Pinpoll_Widget extends WP_Widget {
 			});
 		</script>
                 
-		<p><small>Display specific polls and boards or load random polls from a category in an <a href="http://www.w3.org/TR/html4/present/frames.html#edef-IFRAME">iframe</a>. For plug-in details <a href="https://pinpoll.com/Plug-ins" target="_blank">click here</a>.</small></p>
+		<p><small>Display specific polls and boards or load random polls from a category in an <a href="http://www.w3.org/TR/html4/present/frames.html#edef-IFRAME">iframe</a>. For plug-in details <a href="https://pinpoll.com" target="_blank">click here</a>.</small></p>
 		<p>
 			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:' ); ?></label> 
 			<input size="28" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo esc_attr($title); ?>" />
@@ -177,12 +175,10 @@ class Pinpoll_Widget extends WP_Widget {
 		</p>
         <hr style="margin:15px 0; color:#FFF; background-color:#FFF;" />
 		<p>
-			<label for="<?php echo $this->get_field_id( 'width' ); ?>"><?php _e( 'Width:' ); ?></label>
-			<input size="4" id="<?php echo $this->get_field_id('width'); ?>" name="<?php echo $this->get_field_name('width'); ?>" type="text" value="<?php echo esc_attr($width); ?>" />
 			<label for="<?php echo $this->get_field_id( 'height' ); ?>"><?php _e( 'Height:' ); ?></label> 
 			<input size="4" id="<?php echo $this->get_field_id('height'); ?>" name="<?php echo $this->get_field_name('height'); ?>" type="text" value="<?php echo esc_attr($height); ?>" />
 		</p>
-		<p><small>Hint: Set width &amp; height as integer for pixels (e.g., 350).</small></p>
+		<p><small>Hint: Set height as integer for pixels (e.g., 350).</small></p>
 		<p>
 			<label for="<?php echo $this->get_field_id( 'colour' ); ?>"><?php _e( 'Custom Colour:' ); ?></label>
 			<input size="28" id="<?php echo $this->get_field_id('colour'); ?>" name="<?php echo $this->get_field_name('colour'); ?>" type="text" value="<?php echo esc_attr($colour); ?>" />
@@ -205,8 +201,7 @@ class Pinpoll_Widget extends WP_Widget {
 				
 		$instance = $old_instance;
 		$instance['title'] = strip_tags($new_instance['title']);
-		$instance['width'] = trim(strip_tags($new_instance['width'])) != "" ? strip_tags($new_instance['width']) : 200;
-		$instance['height'] = trim(strip_tags($new_instance['height'])) != "" ? strip_tags($new_instance['height']) : 450;
+		$instance['height'] = trim(strip_tags($new_instance['height'])) != "" ? strip_tags($new_instance['height']) : 350;
 		$instance['poll_id'] = strip_tags($new_instance['poll_id']);
 		$instance['service_url_base'] = strip_tags($new_instance['service_url_base']);
 		$instance['fallback_url_base'] = strip_tags($new_instance['fallback_url_base']);
@@ -224,10 +219,6 @@ class Pinpoll_Widget extends WP_Widget {
 				$instance['service_url'] = strip_tags($new_instance['service_url_base']."?category_id=".$new_instance['category_id']."&popular_min=".$new_instance['popular_min']);
 				$instance['fallback_url']= strip_tags($new_instance['fallback_url_base']."category?category_id=".$new_instance['category_id']);
 			break;
-		}
-		
-		if(strlen(strip_tags($new_instance['width'])) > 0) {
-			$instance['service_url'].="&width=".strip_tags($new_instance['width']);
 		}
 		
 		if(strlen(strip_tags($new_instance['height'])) > 0) {
@@ -267,7 +258,7 @@ class Pinpoll_Widget extends WP_Widget {
 		extract($args);
 		echo $before_widget . $before_title . $instance['title']  . $after_title; 
 		?>
-		<iframe style="<?php echo $instance['style'] ; ?>" scrolling="0" frameborder="no" src="<?php echo $instance['service_url'] ; ?>" width="<?php echo $instance['width'] ; ?>" height="<?php echo $instance['height'] ; ?>">
+		<iframe style="<?php echo $instance['style'] ; ?>" scrolling="0" frameborder="no" src="<?php echo $instance['service_url'] ; ?>" width="100%" height="<?php echo $instance['height'] ; ?>">
 			iFrames are not supported by your browser. No worries, follow this link to <a href="<?php echo $instance['fallback_url'] ; ?>">open the poll</a>.
 		</iframe>
 		<?php 
@@ -281,9 +272,8 @@ function widget_pinpoll_on_page($text){
 	if (is_array($text)) {
 		$param = explode(",", $text[1]);
 		$others = "";
-		$others = ' width="' .($param[1] != "" ? $param[1] : 200) . '"';
-		$others .= ' height="' .($param[2] != "" ? $param[2] : 450) . '"';
-		$others .= ' frameborder="no" scrolling="0"';			
+		$others .= ' height="' .($param[1] != "" ? $param[1] : 350) . '"';
+		$others .= ' frameborder="0" scrolling="no"';			
 		//generate the iframe tag
 		$text = '<iframe src="'.$param[0].'"'.$others.'></iframe>';
 	}
