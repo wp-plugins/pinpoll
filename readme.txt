@@ -94,4 +94,4 @@ Just drop us a line: support@pinpoll.com - we appreciate any new ideas to make P
 
 == Upgrade Notice ==
 * This widget is still in beta and we keep improving it on a regular basis - stay tuned!
-* Please report any bugs to support@pinpoll.com
+* Please report any bugs to support@pinpoll.com 
