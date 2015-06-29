@@ -3,16 +3,16 @@ Contributors: Tobias Oberascher
 Tags: opinion, analytics, profiling, dashboard, cockpit, feedback, free, poll, survey
 Requires at least: 3.0
 Tested up to: 4.2.2
-Stable tag: 2.5
+Stable tag: 2.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 Create polls. Embed polls. Know your audience and customers.
 
 == Description ==
-This widget embeds polls created on pinpoll.com. Create your own polls or choose from more than 3.000 existing polls from over 20 categories, one of which will perfectly match the topic of you blog. Show specific or random polls and set a minimum sample size. You may also limit the number of polls and apply your custom look and feel. You can even show the results distributed on a map. 
+This widget embeds polls created on pinpoll.com. Create your own polls or choose from more than 3.000 existing polls from over 20 categories, one of which will perfectly match the topic of you blog. Show specific or random polls and set a minimum sample size. You may also limit the number of polls and apply your custom look and feel. You can even show the results distributed on a map.
 
-Pinpoll is fully responsive and free to use! 
+Pinpoll is fully responsive and free to use!
 
 You want to get paid for publishing? Please get in touch: office@pinpoll.com
 
@@ -25,10 +25,10 @@ You want to get paid for publishing? Please get in touch: office@pinpoll.com
 6. In WordPress, to add polls to any post we suggest to use the Code Generator ("Settings > Pinpoll") to simply copy the generated code and paste it to your post. Experienced users may simply use and adjust this snippet [pinpoll]service_url,height[/pinpoll]
 
 Some examples:
-[pinpoll]https://pinpoll.com/plugin?id=3480[/pinpoll] 
-[pinpoll]https://pinpoll.com/plugin?category_id=23&popular_min=100&limit=20&height=300,300[/pinpoll]. 
-[pinpoll]https://pinpoll.com/plugin?board_id=202&height=300&description=0,300[/pinpoll]. 
-[pinpoll]https://pinpoll.com/plugin?id=3480&colour=ff3366&map=0,500[/pinpoll] 
+[pinpoll]https://pinpoll.com/plugin?id=3480[/pinpoll]
+[pinpoll]https://pinpoll.com/plugin?category_id=23&popular_min=100&limit=20&height=300,300[/pinpoll].
+[pinpoll]https://pinpoll.com/plugin?board_id=202&height=300&description=0,300[/pinpoll].
+[pinpoll]https://pinpoll.com/plugin?id=3480&colour=ff3366&map=0,500[/pinpoll]
 
 Please ensure that the URL complies with this format to avoid problems with our webservice.
 
@@ -72,10 +72,10 @@ Just drop us a line: support@pinpoll.com - we appreciate any new ideas to make P
 * Changed default values to facilitate first time integration
 
 = 1.1 =
-* Added full SSL support to make calls more secure 
+* Added full SSL support to make calls more secure
 
 = 2.0 =
-* New layout and customisation options 
+* New layout and customisation options
 
 = 2.1 =
 * Removed max answers field, added eternal slider, faster (ad-hoc) loading
@@ -92,6 +92,9 @@ Just drop us a line: support@pinpoll.com - we appreciate any new ideas to make P
 = 2.5 =
 * Removed width and updated service URLs
 
+= 2.6 =
+* Fixed CSS Bug
+
 == Upgrade Notice ==
 * This widget is still in beta and we keep improving it on a regular basis - stay tuned!
-* Please report any bugs to support@pinpoll.com 
+* Please report any bugs to support@pinpoll.com
